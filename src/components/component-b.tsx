@@ -1,16 +1,13 @@
-import React, { useCallback, useState } from "react";
-import KeyboardShortcut from "../keypress-shortcut/KeyboardShortcut";
-import { Card } from "../component-a/styles";
+import { useCallback, useState } from "react";
+import KeyboardShortcut from "./keypress-shortcut/KeyboardShortcut";
+import { Card } from "./component-a/styles";
+import { generateRandomColor } from "../utility/utility-functions";
 
 function ComponentB() {
   const [randomColor, setRandomColor] = useState<string>();
 
   const turnSomeColor = useCallback((): void => {
-    let maxVal = 0xffffff;
-    let randomNumber = Math.random() * maxVal;
-    randomNumber = Math.floor(randomNumber);
-    let randColor = randomNumber.toString(16);
-    setRandomColor(randColor);
+    setRandomColor(generateRandomColor());
   }, []);
 
   return (
